@@ -66,10 +66,10 @@ $result = json_split_objects($json);
         //║  Parametros de conexao
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-        $host="localhost";
-        $login="root";
-        $senha="";
-        $banco="campingsEuropeFabrikaDS";
+            $host="localhost";
+            $login="root";
+            $senha="";
+            $banco="campingsEuropeFabrikaDS";
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -114,6 +114,7 @@ $result = json_split_objects($json);
         $principalTitle = strtoupper($value->raisonSociale_en);
         $principalDescription = strtoupper("");
         $principalAdvantagesDescription = strtoupper(""); // Gravar en Json {adv1 = "", adv2 = "", etc}
+        $defaultLogoCamping = "";
         $principalIMGuniqueRoute = "";
         $principalIMGslideRoute = ""; // Gravar en Json {rota1 = "", rota2 = "", etc}
         // Admin Settings contact
@@ -164,6 +165,7 @@ $result = json_split_objects($json);
                     principalTitle,
                     principalDescription,
                     principalAdvantagesDescription,
+                    defaultLogoCamping,
                     principalIMGuniqueRoute,
                     principalIMGslideRoute,
                     namePerson,
@@ -196,6 +198,7 @@ $result = json_split_objects($json);
                     '$principalTitle',
                     '$principalDescription',
                     '$principalAdvantagesDescription',
+                    '$defaultLogoCamping',
                     '$principalIMGuniqueRoute',
                     '$principalIMGslideRoute',
                     '$namePerson',
