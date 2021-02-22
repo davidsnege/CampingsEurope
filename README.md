@@ -12,9 +12,9 @@ A definir
 ## ETAPAS DE PROJETO
 
 1. [x] Base de Dados de Campings
-2. [] Base de Dados de Lugares/Associações
-3. [] etc.
-4. [] etc...
+2. Base de Dados de Lugares/Associações
+3. etc.
+4. etc...
 
 ## HISTORICO DE MODIFICAÇÕES
 
