@@ -9,7 +9,8 @@
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 // Carregamos o arquivo externo Json com problemas de multiplas raizes
-$json = file_get_contents('dataImportoldsite/response_country8.json');
+$json = file_get_contents('dataImportoldsite/response_country1.json'); // Mas actualizados
+// $json = file_get_contents('dataImportoldsite/response_pais_8.json');
 echo '<pre>';
 
 //--------------------------------------------------------------------------------
@@ -58,10 +59,6 @@ $result = json_split_objects($json);
     // print_r($newJson['campings']);
     echo 'Total de Campings: '.$newJson['campings'][0]->{'thesaurusCode'} . ' - ' . count($newJson['campings']);
     echo '<br>';
-
-    // Outro foreach para insertar na base de dados
-    foreach ($newJson['campings'] as $value) {
-        // Aqui é onde podemos inserir o que queremos na base de dados
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
         //║  INSERE registro na tabela da Base de dados
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -69,10 +66,10 @@ $result = json_split_objects($json);
         //║  Parametros de conexao
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-                $host="localhost";
-                $login="root";
-                $senha="";
-                $banco="campingsEurope";
+        $host="localhost";
+        $login="root";
+        $senha="";
+        $banco="campingsEuropeFabrikaDS";
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -81,93 +78,154 @@ $result = json_split_objects($json);
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
                 $conecta = new mysqli ($host, $login, $senha, $banco);
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+    // Outro foreach para insertar na base de dados
+    foreach ($newJson['campings'] as $value) {
+        // Aqui é onde podemos inserir o que queremos na base de dados
+        //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+        //║  Criamos as variaveis para carrgar na base de dados
+        //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+        // Dados Basicos e tratamento de casos 
+        $raisonSociale = strtoupper($value->raisonSociale);
+        $alias = strtoupper($value->alias);
+        $email = strtoupper($value->email);
+        $contactEmail = $value->email;
+        $contactPhone = strtoupper("");
+        $addressOne = strtoupper($value->Adr1);
+        $addressTwo = strtoupper($value->Adr2);
+        $addressComplement = strtoupper($value->Adr3);
+        $addressPostalCode = strtoupper($value->codePostal);
+        $isAgroupCampings = strtoupper($value->isGroup);
+        // Address Location
+        $addressCountry = strtoupper($value->{123});
+        $addressDepartement = strtoupper($value->{88});
+        if($addressDepartement === ""){ 
+            $addressDepartement = strtoupper($value->Libelle); 
+        };
+        $addressRegion = strtoupper($value->{104});
+        if($addressRegion === ""){ 
+            $addressRegion = strtoupper($value->{114}); 
+        };
+        if($addressRegion === ""){ 
+            $addressRegion = strtoupper($value->{115}); 
+        };
+        // Titulo da pagina Principal
+        $principalTitle = strtoupper($value->raisonSociale_en);
+        $principalDescription = strtoupper("");
+        $principalAdvantagesDescription = strtoupper(""); // Gravar en Json {adv1 = "", adv2 = "", etc}
+        $principalIMGuniqueRoute = "";
+        $principalIMGslideRoute = ""; // Gravar en Json {rota1 = "", rota2 = "", etc}
+        // Admin Settings contact
+        $namePerson = strtoupper("");
+        $nameSurnamePerson = strtoupper("");
+        $contactPerson = strtoupper("");
+        $emailPerson = "";
+        // Coordenadas
+        $coordLatitude = strtoupper($value->latitude);
+        if($coordLatitude === ""){ 
+            $coordLatitude = strtoupper($value->{55}); 
+        };
+        $coordLongitud = strtoupper($value->longitude);
+        if($coordLongitud === ""){ 
+            $coordLongitud = strtoupper($value->{54});
+        };
+        // Dados Criticos de acesso a B.O
+        $login = strtoupper($value->login);
+        $pass = strtoupper($value->pass); // Criar chave segura
+        // Dados de Validação de recursos
+        $backoffice = strtoupper("1");
+        // Dados para SEO
+        $seoTitle = strtoupper($value->raisonSociale_en);
+        $seoDescription = strtoupper($value->raisonSociale_en);
+        // Language default 
+        $languageDef = strtoupper($value->thesaurusCode);
+        if($languageDef === ""){ 
+            $languageDef = strtoupper($value->{122});
+        };
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
         //║  Definimos a query para inserir o registro na tabela na base de dados e armazenamos na variavel $sql
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-                $sqli = "INSERT INTO campings_data (id_camping, name_campìng, etc, etc, etc)".
-                "VALUES ('$value->id_camping','$value->email', '$value->RaisonSociale', 'etc', 'etc')";
+                $sqli = "INSERT INTO campingDataUseGeneral 
+                (   raisonSociale, 
+                    alias, 
+                    email, 
+                    contactEmail, 
+                    contactPhone, 
+                    addressOne,
+                    addressTwo,
+                    addressComplement,
+                    addressPostalCode,
+                    isAgroupCampings,
+                    addressCountry,
+                    addressRegion,
+                    addressDepartement,
+                    principalTitle,
+                    principalDescription,
+                    principalAdvantagesDescription,
+                    principalIMGuniqueRoute,
+                    principalIMGslideRoute,
+                    namePerson,
+                    nameSurnamePerson,
+                    contactPerson,
+                    emailPerson,
+                    coordLatitude,
+                    coordLongitud,
+                    login,
+                    pass,
+                    backoffice,
+                    seoTitle,
+                    seoDescription,
+                    languageDef 
+                    )".
+                "VALUES (
+                    '$raisonSociale',
+                    '$alias', 
+                    '$email',
+                    '$contactEmail',
+                    '$contactPhone',
+                    '$addressOne',
+                    '$addressTwo',
+                    '$addressComplement',
+                    '$addressPostalCode',
+                    '$isAgroupCampings',
+                    '$addressCountry',
+                    '$addressRegion',
+                    '$addressDepartement',
+                    '$principalTitle',
+                    '$principalDescription',
+                    '$principalAdvantagesDescription',
+                    '$principalIMGuniqueRoute',
+                    '$principalIMGslideRoute',
+                    '$namePerson',
+                    '$nameSurnamePerson',
+                    '$contactPerson',
+                    '$emailPerson',
+                    '$coordLatitude',
+                    '$coordLongitud',
+                    '$login',
+                    '$pass',
+                    '$backoffice',
+                    '$seoTitle',
+                    '$seoDescription',
+                    '$languageDef'
+                     )";
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
         //║  Executamos e conferimos o estado "verdadeiro ou falso" e definimos mensagens para "true or false"
         //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
         //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
                 if ($conecta->query($sqli) === TRUE){
-                echo '<div class="alert alert-success"><strong>Parabéns, </strong> Dados inseridos com sucesso! </div>';
+                echo '<div class="alert alert-success"><strong>Parabéns, '.$raisonSociale.' </strong> Dados inseridos com sucesso! </div>';
                 }else{
                 echo '<div class="alert alert-danger"><strong>Que pena, </strong> não foi possível inserir os dados </div>';
                 }
-        //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-        // Aqui printamos para conferir o que temos
-        echo '<br>';
-        echo '<hr>';
-        echo '2: '; echo strtoupper($value->id_camping); echo '&nbsp;';
-        echo '<br>';
-        echo '3: '; echo strtoupper($value->RaisonSociale); echo '&nbsp;';
-        echo '<br>';
-        // echo '0: '; echo strtoupper($value->raisonSociale_en); echo '&nbsp;';
-        // echo '<br>';
-        // echo '0: '; echo strtoupper($value->raisonSociale_pt); echo '&nbsp;';
-        // echo '<br>';
-        // echo '0: '; echo strtoupper($value->raisonSociale_es); echo '&nbsp;';
-        // echo '<br>';
-        // echo '0: '; echo strtoupper($value->raisonSociale_fr); echo '&nbsp;';
-        // echo '<br>';
-        echo '4: '; echo strtoupper($value->raisonSociale); echo '&nbsp;';
-        echo '<br>';
-        echo '5: '; echo strtoupper($value->codePostal); echo '&nbsp;';
-        echo '<br>';
-        echo '6: '; echo $value->email; echo '&nbsp;';
-        echo '<br>';
-        echo '7: '; echo strtoupper($value->alias); echo '&nbsp;';
-        echo '<br>';
-        echo '8: '; echo strtoupper($value->Adr1); echo '&nbsp;';
-        echo '<br>';
-        //echo '0: '; echo strtoupper($value->Coord); echo '&nbsp;';
-        // echo '<br>';
-        echo '9: '; echo strtoupper($value->inseeCode); echo '&nbsp;';
-        echo '<br>';
-        echo '10: '; echo strtoupper($value->seo_urlkey); echo '&nbsp;';
-        echo '<br>';
-        echo '11: '; echo strtoupper($value->Libelle); echo '&nbsp;';
-        echo '<br>';
-        echo '12: '; echo strtoupper($value->{81}); echo '&nbsp;';
-        echo '<br>';
-        echo '13: '; echo strtoupper($value->{88}); echo '&nbsp;';
-        echo '<br>';
-        // echo '0: '; echo strtoupper($value->{92}); echo '&nbsp;';
-        // echo '<br>';
-        echo '14: '; echo strtoupper($value->{102}); echo '&nbsp;';
-        echo '<br>';
-        echo '15: '; echo strtoupper($value->{104}); echo '&nbsp;';
-        echo '<br>';
-        echo '16: '; echo strtoupper($value->{114}); echo '&nbsp;';
-        echo '<br>';
-        // echo '0: '; echo strtoupper($value->{111}); echo '&nbsp;';
-        // echo '<br>';
-        echo '17: '; echo strtoupper($value->{121}); echo '&nbsp;';
-        echo '<br>';
-        echo '18: '; echo strtoupper($value->{122}); echo '&nbsp;';
-        // echo '<br>';
-        // echo '0: '; echo strtoupper($value->{109}); echo '&nbsp;';
-        // echo '<br>';
-        // echo '0: '; echo strtoupper($value->{110}); echo '&nbsp;';
-        echo '<br>';
-        echo '19: '; echo strtoupper($value->{47}); echo '&nbsp;';
-        echo '<br>';
-        echo '20: '; echo strtoupper($value->{46}); echo '&nbsp;';
-        echo '<br>';
-        echo '21: '; echo strtoupper($value->{55}); echo '&nbsp;';
-        echo '<br>';
-        echo '22: '; echo strtoupper($value->{54}); echo '&nbsp;';
-        echo '<hr>';
-        echo '</br>';
+        //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝          
     }
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
-
-
 echo '</pre>';
 // 
 

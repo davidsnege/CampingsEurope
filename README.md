@@ -11,8 +11,8 @@ A definir
 
 ## ETAPAS DE PROJETO
 
-1. etc.
-2. etc.
+1. Base de Dados de Campings
+2. Base de Dados de Lugares/Associações
 3. etc.
 4. etc...
 
