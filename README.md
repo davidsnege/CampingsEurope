@@ -27,3 +27,12 @@ A definir
 2. etc.
 3. etc.
 4. etc...
+
+## BUGS RELATADOS E CORREGIDOS
+
+#### #BUG22022021/NameBugDescription 
+- - OPEN
+- commits - merges - requests
+#### #BUG22022021/NameBugDescription 
+- - CLOSE
+- commits - merges - requests
