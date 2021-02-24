@@ -6,7 +6,7 @@ v00.22022021.1459
 
 ## EXECUTANDO
 
-1. Necesario ter SLIM instalado.
+## Necesario ter SLIM instalado.
 #### https://www.slimframework.com/
 #### Recomendo que se instale desta forma.
 1. Entrar em: https://github.com/slimphp/Slim-Skeleton.
@@ -18,7 +18,10 @@ v00.22022021.1459
 ## ETAPAS DE PROJETO
 
 1. [x] Base de Dados de Campings
-2. [x] Instalar Framework do PHP Slim para usar como API end Points
+2. [x] Instalar Framework PHP (Slim) para usar como API end Points (Vamos utilizar somente para POST, PUT, GET, DELETE, etc... API e requisições)
+3. [ ] Instalar framework frontend (AngularJS) estavel (Nossa Preferencia por sua construção rápida).
+4. [ ] Construir todos endpoints API para o backoffice Admin primeiro.
+5. [ ] Provar em Postman e guardar os testes para armazenar no projeto.
 
 ## HISTORICO DE MODIFICAÇÕES
 
