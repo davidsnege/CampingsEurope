@@ -6,7 +6,7 @@ v00.22022021.1459
 
 ## EXECUTANDO
 
--- O objetivo principal é que clonando apenas o repositório não seja necessário a instalação de nenhum item a mais, mesmo assim deixamos o histórico de instalações, frameworks, ou bibliotecas que podem fazer falta se você utilizar ou modificar o projeto e alguma coisa começar a falhar na sua versão.
+- O objetivo principal é que clonando apenas o repositório não seja necessário a instalação de nenhum item a mais, mesmo assim deixamos o histórico de instalações, frameworks, ou bibliotecas que podem fazer falta se você utilizar ou modificar o projeto e alguma coisa começar a falhar na sua versão.
 
 #### Necesario ter SLIM instalado.
 1. [x] https://www.slimframework.com/
