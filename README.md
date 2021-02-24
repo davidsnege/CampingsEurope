@@ -1,10 +1,12 @@
 # CampingsEurope
 Sistema para gerenciamento de Campings e Pagina de indexação de campings na europa
 
-## VERSÃO
+## VERSÃO (Funciona a partir da primeira versão estavel somente)
 v00.22022021.1459
 
 ## EXECUTANDO
+
+-- O objetivo principal é que clonando apenas o repositório não seja necessário a instalação de nenhum item a mais, mesmo assim deixamos o histórico de instalações, frameworks, ou bibliotecas que podem fazer falta se você utilizar ou modificar o projeto e alguma coisa começar a falhar na sua versão.
 
 #### Necesario ter SLIM instalado.
 1. [x] https://www.slimframework.com/
@@ -23,19 +25,19 @@ v00.22022021.1459
 4. [ ] Construir todos endpoints API para o backoffice Admin primeiro.
 5. [ ] Provar em Postman e guardar os testes para armazenar no projeto.
 
-## HISTORICO DE MODIFICAÇÕES
+## HISTORICO DE MODIFICAÇÕES (Funciona a partir da primeira versão estavel somente)
 
 ### issue#1.  
 ### issue#2.  
 
-## FEATURES e MELLHORAS
+## FEATURES e MELLHORAS (Funciona a partir da primeira versão estavel somente)
 
 1. etc.
 2. etc.
 3. etc.
 4. etc...
 
-## BUGS RELATADOS E CORREGIDOS
+## BUGS RELATADOS E CORREGIDOS (Funciona a partir da primeira versão estavel somente)
 
 #### #BUG22022021/NameBugDescription 
 - - OPEN
