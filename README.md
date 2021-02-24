@@ -7,7 +7,7 @@ v00.22022021.1459
 ## EXECUTANDO
 
 #### Necesario ter SLIM instalado.
-[x] https://www.slimframework.com/
+1. [x] https://www.slimframework.com/
 #### Recomendo que se instale desta forma.
 1. Entrar em: https://github.com/slimphp/Slim-Skeleton.
 2. Fazer clone com GiT: git clone https://github.com/slimphp/Slim-Skeleton.git.
