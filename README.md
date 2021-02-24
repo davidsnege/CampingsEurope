@@ -12,8 +12,7 @@ v00.22022021.1459
 
 The easiest way to start working with Slim is to create a project using Slim-Skeleton as a base by running this bash command:
 
-'''$ php composer.phar create-project slim/slim-skeleton:dev-master [my-app-name]'''
-Replace [my-app-name] with the desired directory name for your new application.
+'''$ php composer create-project slim/slim api'''
 
 You can then run it with PHP's built-in webserver:
 
