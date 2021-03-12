@@ -1,0 +1,12 @@
+body {
+    background-color: brown;
+    color: cornsilk;
+    font-family: verdana;
+    font-size: small;
+}
+.navbar-dark .navbar-brand {
+    font-size: x-small !important;
+}
+.navbar-text {
+    font-size: x-small !important;
+}
