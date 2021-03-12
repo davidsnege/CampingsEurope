@@ -3,10 +3,31 @@ body {
     color: cornsilk;
     font-family: verdana;
     font-size: small;
+    border: 0px;
+    border-color: unset;
 }
 .navbar-dark .navbar-brand {
     font-size: x-small !important;
 }
 .navbar-text {
     font-size: x-small !important;
+}
+.menuLI {
+    width: 250px;
+}
+.bg-primary {
+    background-color: #6c757d !important;
+}
+.div1 {
+    flex: 0 0 0% !important;
+    margin-top: 13px;
+    margin-left: -4px;
+    color: brown !important;
+}
+.div2 {
+    margin-left: -4px;
+    margin-top: 14px;
+}
+.div3 {
+    margin-left: -4px;
 }
