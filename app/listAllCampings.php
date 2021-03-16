@@ -17,11 +17,16 @@
 //║  Parametros de conexao
 //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
     require 'config_db.php';
+
+    $asc = $_POST['asc'];
+    $limitStart = $_POST['limitStart'];
+    $limitExhibition = $_POST['limitExhibition'];
+
 //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 //║  Definimos a query para listar registros da tabela da base de dados e armazenamos na variavel $sql
 //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-    $sql = "SELECT * FROM campingDataUseGeneral ORDER BY id ASC LIMIT 0, 25";
+    $sql = "SELECT * FROM campingDataUseGeneral ORDER BY id $asc LIMIT $limitStart, $limitExhibition";
 //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 //║  Criamos a variavel $result para armazenar a execução da query 

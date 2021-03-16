@@ -13,17 +13,107 @@
     </tbody>
   </table>
 
+  <button id="PrevButton" type="button" class="btn btn-primary btn-sm"> PREV << -10 </button>
+  <button id="NeutralButton" type="button" class="btn btn-primary btn-sm"> 0 </button>
+  <button id="NextButton" type="button" class="btn btn-primary btn-sm"> +10 >> NEXT</button>
+
   <script>
     $( document ).ready(function() {
-        $.post("app/listAllCampings.php", function(data, status){
+
+        var apartirDe = 0; 
+        var limite = 25;  
+//------------------------------------------------------------------------------------
+
+      // Listamos tudo que podemos da base de dados
+        $.post("app/listAllCampings.php", 
+          {
+            asc: "asc",
+            limitStart: apartirDe,
+            limitExhibition: limite,
+          },        
+        function (data, status){
           var objs = JSON.parse(data);
           for (let index = 0; index < objs.length; index++) {
             const element = objs[index];
+            var contador = objs.length;
             $( "tbody" ).append( 
               '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
             );
           }
+          $( "caption" ).text( "List of Campings " + contador );         
         });
+
+//------------------------------------------------------------------------------------
+
+        $( "#PrevButton" ).click(function() {
+          console.log( "Prev Button" );
+          if(apartirDe !== 0){
+            apartirDe = apartirDe - 10;
+          $( "#NeutralButton" ).text( apartirDe );  
+          $( "tbody" ).text('');
+          limit = $("#MaxSee").text();
+          }else{
+            apartirDe = 0;
+            $( "tbody" ).text('');
+          }
+        // Listamos tudo que podemos da base de dados
+        $.post("app/listAllCampings.php", 
+          {
+            asc: "asc",
+            limitStart: apartirDe,
+            limitExhibition: limite,
+          },        
+        function (data, status){
+          var objs = JSON.parse(data);
+          for (let index = 0; index < objs.length; index++) {
+            const element = objs[index];
+            var contador = objs.length;
+
+            $( "tbody" ).append( 
+              '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
+            );
+          }
+          $( "caption" ).text( "List of Campings " + contador );         
+        });
+        });
+
+//------------------------------------------------------------------------------------
+
+        $( "#NextButton" ).click(function() {
+          console.log( "Next Button" );
+          apartirDe = apartirDe + 10;
+          $( "#NeutralButton" ).text( apartirDe );  
+          $( "tbody" ).text('');
+              // Listamos tudo que podemos da base de dados
+              $.post("app/listAllCampings.php", 
+          {
+            asc: "asc",
+            limitStart: apartirDe,
+            limitExhibition: limite,
+          },        
+        function (data, status){
+          var objs = JSON.parse(data);
+          for (let index = 0; index < objs.length; index++) {
+            const element = objs[index];
+            var contador = objs.length;
+
+            $( "tbody" ).append( 
+              '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
+            );
+          }
+          $( "caption" ).text( "List of Campings " + contador );         
+        });
+        });
+
+//------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
     });
   </script>
 
