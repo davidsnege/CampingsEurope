@@ -11,8 +11,10 @@ v00.22022021.1459
 ## ETAPAS DE PROJETO (WIP)
 
 1. [x] Base de Dados de Campings
-2. [ ] Construir todos endpoints API para o backoffice Admin primeiro.
-3. [ ] Provar em Postman e guardar os testes para armazenar no projeto.
+2. [x] Router AngularJS configurado
+3. [x] Chamada a API Ajax
+4. [ ] Construir todos endpoints API para o backoffice Admin primeiro.
+5. [ ] Provar em Postman e guardar os testes para armazenar no projeto.
 
 ## HISTORICO DE MODIFICAÇÕES (WIP)
 
