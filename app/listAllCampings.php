@@ -21,7 +21,7 @@
 //║  Definimos a query para listar registros da tabela da base de dados e armazenamos na variavel $sql
 //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-    $sql = "SELECT * FROM campingDataUseGeneral ORDER BY id ASC LIMIT 0, 1000";
+    $sql = "SELECT * FROM campingDataUseGeneral ORDER BY id ASC LIMIT 0, 25";
 //╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 //╔══════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 //║  Criamos a variavel $result para armazenar a execução da query 
