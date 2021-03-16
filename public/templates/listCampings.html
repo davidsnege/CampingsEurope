@@ -1,4 +1,4 @@
-<table id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25' class="table table-success table-hover table-striped table-sm">
+<table id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25' class="table table-light table-hover table-striped table-sm">
     <caption>List of Campings</caption>
     <thead>
       <tr>
@@ -40,7 +40,7 @@
               '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
             );
           }
-          $( "caption" ).text( "List of Campings " + contador );         
+          $( "caption" ).text( "List of Campings " + contador + " " + element );         
         });
 
 //------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@
               '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
             );
           }
-          $( "caption" ).text( "List of Campings " + contador );         
+          $( "caption" ).text( "List of Campings "  + contador + " " + element  );         
         });
         });
 
