@@ -6,6 +6,10 @@ body {
     border: 0px;
     border-color: unset;
 }
+a {
+    color: brown;
+    text-decoration: none;
+}
 .navbar-dark .navbar-brand {
     font-size: x-small !important;
 }

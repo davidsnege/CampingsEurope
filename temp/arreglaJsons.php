@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 // Carregamos o arquivo externo Json com problemas de multiplas raizes
-$json = file_get_contents('dataImportoldsite/response_country1.json'); // Mas actualizados
+$json = file_get_contents('install_db/response_country11.json'); // Mas actualizados
 // $json = file_get_contents('dataImportoldsite/response_pais_8.json');
 echo '<pre>';
 

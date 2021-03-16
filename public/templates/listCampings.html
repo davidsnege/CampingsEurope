@@ -1,0 +1,31 @@
+<table id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25' class="table table-success table-hover table-striped table-sm">
+    <caption>List of Campings</caption>
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">raisonSociale</th>
+        <th scope="col">email</th>
+        <th scope="col">Country</th>
+      </tr>
+    </thead>
+    <tbody class="MyDataTable">
+  
+    </tbody>
+  </table>
+
+  <script>
+    $( document ).ready(function() {
+        $.post("app/listAllCampings.php", function(data, status){
+          var objs = JSON.parse(data);
+          for (let index = 0; index < objs.length; index++) {
+            const element = objs[index];
+            $( "tbody" ).append( 
+              '<tr>  <th scope="row">'+element.id+'</th> <td>'+element.raisonSociale+'</td> <td>'+element.email+'</td> <td>'+element.addressCountry+'</td> </tr>'
+            );
+          }
+        });
+    });
+  </script>
+
+
+
